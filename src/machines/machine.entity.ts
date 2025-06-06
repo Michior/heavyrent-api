@@ -16,5 +16,7 @@ export class Machine {
   available: boolean;
 
   @ManyToOne(() => User, user => user.machines)
-  createdBy: User;
+  createdBy: User;
+
+  
 }
