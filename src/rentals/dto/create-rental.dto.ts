@@ -1,6 +1,5 @@
 import { IsDateString, IsInt } from "class-validator";
 
-
 export class CreateRentalDto {
     @IsInt()
     machineId: number;

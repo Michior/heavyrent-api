@@ -1,15 +1,17 @@
-import { Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, Post, Body, Req, UseGuards } from '@nestjs/common';
 import { MachinesService } from './machines.service';
-import { AuthGuard } from '@nestjs/passport';
 import { CreateMachineDto } from './dto/create-machine.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('machines')
 @ApiBearerAuth()
 @Controller('machines')
-
 export class MachinesController {
-    constructor(private readonly machinesService: MachinesService) {}
+
+    constructor(
+        private readonly machinesService: MachinesService
+    ) { }
 
     @Post()
     @UseGuards(AuthGuard('jwt'))
@@ -21,4 +23,5 @@ export class MachinesController {
     findAll(){
         return this.machinesService.findAll();
     }
+
 }
